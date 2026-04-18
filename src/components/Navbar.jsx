@@ -1,3 +1,5 @@
+import IndiaFlagBadge from "./IndiaFlagBadge"
+
 function Navbar({ user, onLogout, onOpenAuth, view, theme = "light" }) {
   return (
     <header
@@ -7,7 +9,10 @@ function Navbar({ user, onLogout, onOpenAuth, view, theme = "light" }) {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
         <div>
-          <p className="text-xl font-bold tracking-tight text-slate-900">BharatDoc 🇮🇳</p>
+          <p className="inline-flex items-center gap-2 text-xl font-bold tracking-tight text-slate-900">
+            BharatDoc
+            <IndiaFlagBadge />
+          </p>
           <p className="text-xs text-slate-600">Clarity Before You Sign</p>
         </div>
 

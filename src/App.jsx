@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import AnalysisPanel from "./components/AnalysisPanel"
 import AuthCard from "./components/AuthCard"
+import IndiaFlagBadge from "./components/IndiaFlagBadge"
 import Navbar from "./components/Navbar"
 import UploadPanel from "./components/UploadPanel"
 import { simulateAnalysis } from "./services/simulateAnalysis"
@@ -224,7 +225,10 @@ function App() {
           <>
             <section className="rounded-3xl border border-white/60 bg-white/65 p-5 shadow-xl shadow-blue-100/60 backdrop-blur-md sm:p-6 lg:p-10">
               <div className="text-center lg:text-left">
-                <p className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-6xl">BharatDoc 🇮🇳</p>
+                <p className="inline-flex items-center gap-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-6xl">
+                  BharatDoc
+                  <IndiaFlagBadge className="india-flag--lg" />
+                </p>
                 <p className="mt-2 text-base font-semibold leading-tight text-slate-700 sm:mt-3 sm:text-lg lg:text-2xl">
                   Understand any document in seconds
                 </p>
@@ -588,7 +592,11 @@ function App() {
             </section>
 
             <footer className="mt-8 rounded-2xl border border-white/70 bg-white/70 px-5 py-4 text-center text-xs text-slate-500 shadow-lg shadow-blue-100/30">
-              BharatDoc 🇮🇳 · Copyright © 2026 · Built to simplify document review for modern teams.
+              <span className="inline-flex items-center gap-2">
+                BharatDoc
+                <IndiaFlagBadge />
+              </span>{" "}
+              · Copyright © 2026 · Built to simplify document review for modern teams.
             </footer>
 
             <div className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 rounded-2xl border border-blue-200 bg-white/95 p-2 shadow-2xl shadow-blue-200 backdrop-blur md:hidden">

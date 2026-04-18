@@ -1,6 +1,10 @@
-function Navbar({ user, onLogout, onOpenAuth, view }) {
+function Navbar({ user, onLogout, onOpenAuth, view, theme = "light" }) {
   return (
-    <header className="sticky top-0 z-20 border-b border-white/40 bg-white/65 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-20 border-b backdrop-blur-md ${
+        theme === "dark" ? "border-slate-700/60 bg-slate-950/70" : "border-white/40 bg-white/65"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-10">
         <div>
           <p className="text-xl font-bold tracking-tight text-slate-900">BharatDoc 🇮🇳</p>

@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #edf4ff 0%, #f4f2ff 55%, #f7f4ff 100%);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s ease-out;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.stagger-1 {
+  animation-delay: 40ms;
+}
+.stagger-2 {
+  animation-delay: 80ms;
+}
+.stagger-3 {
+  animation-delay: 120ms;
+}
+.stagger-4 {
+  animation-delay: 160ms;
+}
+.stagger-5 {
+  animation-delay: 200ms;
+}
+.stagger-6 {
+  animation-delay: 240ms;
+}
+.stagger-7 {
+  animation-delay: 280ms;
+}
+
+.perf-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+.parallax-soft {
+  transform: translateZ(0);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.parallax-soft:hover {
+  transform: translateY(-2px);
+}
+
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto auto -120%;
+  width: 55%;
+  height: 200%;
+  transform: rotate(25deg);
+  background: rgba(255, 255, 255, 0.28);
+  transition: left 450ms ease;
+  pointer-events: none;
+}
+
+.btn-glow:hover::after {
+  left: 140%;
+}
+
+.theme-dark .glass-card {
+  border-color: rgba(148, 163, 184, 0.25) !important;
+  background: rgba(15, 23, 42, 0.62) !important;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.45) !important;
+}
+
+.theme-dark .surface-card {
+  border-color: rgba(148, 163, 184, 0.25) !important;
+  background: rgba(30, 41, 59, 0.72) !important;
+  color: #e2e8f0 !important;
+}

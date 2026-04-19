@@ -24,11 +24,6 @@ function App() {
   const [analysis, setAnalysis] = useState(null)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [heroReady, setHeroReady] = useState(false)
-  const [animatedStats, setAnimatedStats] = useState({
-    docs: 0,
-    speed: 0,
-    turnaround: 0,
-  })
 
   const navigateTo = (nextView, nextAuthMode = authMode, options = {}) => {
     const { replace = false } = options
@@ -109,27 +104,27 @@ function App() {
     {
       question: "How does BharatDoc work in practice?",
       answer:
-        "Upload a contract or policy, and BharatDoc extracts key clauses, summarizes obligations, and highlights risky language in plain English so your team can review faster.",
+        "Upload a contract or policy sample, and the prototype will show draft summaries, key points, and sample risk notes for testing.",
     },
     {
       question: "How does BharatDoc identify red flags?",
       answer:
-        "The system checks documents against clause patterns such as open-ended liability, one-sided termination rights, strict penalties, and missing safeguards, then scores severity with context.",
+        "In this prototype, risk indicators are rule-based examples to show the workflow. They are not final legal judgments.",
     },
     {
       question: "Can I use this before involving legal counsel?",
       answer:
-        "Yes. Teams use BharatDoc for first-pass screening and negotiation prep, then share the AI summary with legal experts for final review and sign-off.",
+        "You can use it for demo screening and learning, but please use professional legal review before any real decision.",
     },
     {
       question: "How much does it cost for startups?",
       answer:
-        "You can begin on Starter for free, upgrade to Growth for faster processing and advanced risk scoring, and move to Scale for team workflows, API access, and enterprise controls.",
+        "Pricing is under development. Final pricing will be based on user feedback after prototype testing.",
     },
     {
       question: "Is my document data secure?",
       answer:
-        "BharatDoc uses encrypted transfer and controlled processing layers designed for sensitive documents, so your team can review contracts without exposing raw text unnecessarily.",
+        "Please avoid uploading sensitive real documents in this stage. This is an early prototype built for demonstration purposes.",
     },
   ]
 
@@ -149,29 +144,6 @@ function App() {
     const animationTimer = window.setTimeout(() => setHeroReady(true), 120)
     return () => window.clearTimeout(animationTimer)
   }, [])
-
-  useEffect(() => {
-    if (!heroReady || view !== "marketing") return
-
-    const startedAt = performance.now()
-    const durationMs = 850
-    const targets = { docs: 10, speed: 60, turnaround: 28 }
-
-    const tick = () => {
-      const elapsed = performance.now() - startedAt
-      const progress = Math.min(elapsed / durationMs, 1)
-      setAnimatedStats({
-        docs: Math.round(targets.docs * progress),
-        speed: Math.round(targets.speed * progress),
-        turnaround: Math.round(targets.turnaround * progress),
-      })
-      if (progress < 1) {
-        window.requestAnimationFrame(tick)
-      }
-    }
-
-    window.requestAnimationFrame(tick)
-  }, [heroReady, view])
 
   useEffect(() => {
     const currentState = window.history.state
@@ -235,10 +207,10 @@ function App() {
                 <p className="mt-1.5 text-sm font-medium text-blue-700 lg:mt-2 lg:text-base">Clarity Before You Sign</p>
                 <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500 lg:justify-start">
                   <span className="rounded-full border border-slate-200/70 bg-white/70 px-3 py-1">
-                    Used by 10,000+ users
+                    Early prototype
                   </span>
                   <span className="rounded-full border border-slate-200/70 bg-white/70 px-3 py-1">
-                    Trusted for document clarity
+                    Demo mode
                   </span>
                 </div>
               </div>
@@ -271,8 +243,8 @@ function App() {
               </button>
             </div>
 
-            <section className="mb-4 animate-fade-in-up rounded-2xl border border-blue-200/70 bg-white/75 px-4 py-2.5 text-center text-xs font-semibold tracking-[0.15em] text-blue-700 shadow-md shadow-blue-100/50 backdrop-blur-md sm:mb-5">
-              TRUSTED BY FOUNDERS, OPS, AND LEGAL TEAMS ACROSS INDIA
+            <section className="mb-4 animate-fade-in-up rounded-2xl border border-blue-200/70 bg-white/75 px-4 py-2.5 text-center text-xs font-semibold tracking-[0.08em] text-blue-700 shadow-md shadow-blue-100/50 backdrop-blur-md sm:mb-5">
+              Early prototype preview for student demonstration
             </section>
 
             <section className={`glass-card parallax-soft animate-fade-in-up stagger-1 hero-premium relative overflow-hidden rounded-3xl border border-white/70 bg-white/70 px-5 py-9 shadow-2xl shadow-blue-100/60 backdrop-blur-md sm:px-6 sm:py-11 lg:px-10 lg:py-16 ${heroReady ? "hero-glow" : ""}`}>
@@ -282,17 +254,17 @@ function App() {
                 <div className="text-center lg:text-left">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">AI Contract Assistant</p>
                 <h1 className="mt-2.5 text-balance text-3xl font-black leading-tight tracking-tight text-slate-900 sm:mt-3 sm:text-5xl lg:text-7xl">
-                  Review contracts faster with startup-grade AI
-                  <span className="gradient-text block sm:inline"> with startup speed.</span>
+                  Review documents with a simple prototype
+                  <span className="gradient-text block sm:inline"> for early testing.</span>
                 </h1>
                 <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-600 sm:mt-4 sm:text-lg sm:leading-7">
-                  Go from raw legal text to negotiation-ready insights in under a minute with AI summaries, risk scoring, and action-focused recommendations.
+                  This demo helps you test summary, risk notes, and suggested actions on sample documents.
                 </p>
                 <div className="mx-auto mt-5 grid max-w-3xl grid-cols-1 gap-3 text-left sm:grid-cols-3">
                   {[
-                    [`${animatedStats.docs}k+`, "Documents reviewed"],
-                    [`< ${animatedStats.speed}s`, "Average first summary"],
-                    [`${animatedStats.turnaround}%`, "Faster legal turnaround"],
+                    ["Early Prototype", "Current project stage"],
+                    ["Quick processing (approx)", "Prototype behavior"],
+                    ["Designed for efficiency", "Goal of this demo"],
                   ].map(([value, label]) => (
                     <div key={label} className="surface-card rounded-xl border border-white/80 bg-white/80 p-3 shadow-sm">
                       <p className="text-lg font-bold text-slate-900">{value}</p>
@@ -360,7 +332,7 @@ function App() {
                 {waitlistSubmitted && (
                   <p className="mt-2 text-xs text-blue-100">Thanks! We will contact you shortly.</p>
                 )}
-                <p className="mt-2 text-xs text-blue-100/90">No card required. Setup in under 2 minutes.</p>
+                <p className="mt-2 text-xs text-blue-100/90">This is an early prototype built for demonstration purposes.</p>
               </div>
               <button
                 type="button"
@@ -372,9 +344,9 @@ function App() {
             </section>
 
             <section className="glass-card animate-fade-in-up stagger-2 section-polish mt-5 rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-lg shadow-blue-100/40 sm:mt-6">
-              <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Trusted by modern teams</p>
+              <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Demo preview groups</p>
               <div className="mt-2 grid grid-cols-2 gap-2 text-center text-xs font-medium text-slate-600 sm:grid-cols-4">
-                {["Astra Legal", "PaperBridge", "Nova VC", "UrbanStack"].map((logo) => (
+                {["Sample Team A", "Sample Team B", "Sample Team C", "Sample Team D"].map((logo) => (
                   <div key={logo} className="surface-card rounded-lg border border-slate-200 bg-white px-2 py-2">
                     {logo}
                   </div>
@@ -494,13 +466,13 @@ function App() {
               <section className="perf-section glass-card animate-fade-in-up stagger-5 section-polish mt-6 rounded-3xl border border-white/70 bg-white/75 p-5 shadow-xl shadow-blue-100/40 backdrop-blur-md sm:mt-8 sm:p-6 lg:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">Pricing</p>
               <h3 className="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                Simple plans for <span className="gradient-text">every team</span>
+                Pricing under development
               </h3>
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 {[
-                  ["Starter", "Free", ["5 docs/month", "AI summary", "Basic risk alerts"]],
-                  ["Growth", "$19/mo", ["Unlimited docs", "Advanced risk scoring", "Priority processing"]],
-                  ["Scale", "Custom", ["Team workspace", "Bulk analysis", "API + enterprise support"]],
+                  ["Starter", "Coming Soon", ["Sample usage limits", "Basic summary", "Prototype alerts"]],
+                  ["Growth", "Coming Soon", ["Expanded usage", "Detailed summary", "Priority queue (planned)"]],
+                  ["Scale", "Coming Soon", ["Team workspace", "Bulk analysis", "API support (planned)"]],
                 ].map(([plan, price, features], idx) => (
                   <article
                     key={plan}
@@ -518,30 +490,22 @@ function App() {
                   </article>
                 ))}
               </div>
+              <p className="mt-4 text-xs text-slate-600">Final pricing will be based on user feedback.</p>
               </section>
             )}
 
             {showDeferredSections && (
               <section className="perf-section glass-card animate-fade-in-up stagger-5 section-polish mt-6 rounded-3xl border border-white/70 bg-white/75 p-5 shadow-xl shadow-blue-100/40 backdrop-blur-md sm:mt-8 sm:p-6 lg:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">What users say</p>
-              <h3 className="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Loved by founders and legal teams</h3>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">Feedback status</p>
+              <h3 className="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Early prototype feedback</h3>
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 {[
-                  ["Aarav S.", "Founder", "BharatDoc saved us hours every week by turning legal text into clear action items."],
-                  ["Nisha R.", "Ops Lead", "The risk scoring and summary view made negotiations much faster and more confident."],
-                  ["Rohan M.", "Product Manager", "Looks and feels like a premium tool. Perfect for demos and real workflows."],
-                ].map(([name, role, quote]) => (
-                  <article key={name} className="surface-card rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="mb-2 flex items-center gap-2">
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700">
-                        {name[0]}
-                      </span>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-900">{name}</p>
-                        <p className="text-xs text-slate-500">{role}</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-slate-600">“{quote}”</p>
+                  "This is an early prototype. We are currently collecting feedback.",
+                  "No public testimonials yet. We are testing with sample users.",
+                  "Quotes and case studies will be added after real validation.",
+                ].map((note) => (
+                  <article key={note} className="surface-card rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-600">{note}</p>
                   </article>
                 ))}
               </div>
@@ -552,25 +516,25 @@ function App() {
               <article className="glass-card rounded-2xl border border-white/70 bg-white/75 p-5 shadow-lg shadow-blue-100/40 backdrop-blur-md">
                 <p className="text-sm font-semibold text-slate-900">Save time</p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Jump directly to critical sections and reduce manual review effort.
+                  Quickly review key sections during prototype testing.
                 </p>
               </article>
               <article className="glass-card rounded-2xl border border-white/70 bg-white/75 p-5 shadow-lg shadow-blue-100/40 backdrop-blur-md">
                 <p className="text-sm font-semibold text-slate-900">Protect information</p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Keep confidential data safer with privacy-first processing flows.
+                  Keep documents private while trying this prototype.
                 </p>
               </article>
               <article className="glass-card rounded-2xl border border-white/70 bg-white/75 p-5 shadow-lg shadow-blue-100/40 backdrop-blur-md">
                 <p className="text-sm font-semibold text-slate-900">Scale your practice</p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Analyze large volumes of documents with consistent quality and speed.
+                  Explore how this can support larger workflows in future versions.
                 </p>
               </article>
               <article className="glass-card rounded-2xl border border-white/70 bg-white/75 p-5 shadow-lg shadow-blue-100/40 backdrop-blur-md">
                 <p className="text-sm font-semibold text-slate-900">Risk-first clarity</p>
                 <p className="mt-2 text-sm text-slate-600">
-                  Get actionable warnings and plain-language explanations before you sign.
+                  Get simple risk notes and plain-language explanations.
                 </p>
               </article>
             </section>
@@ -596,7 +560,7 @@ function App() {
                 BharatDoc
                 <IndiaFlagBadge />
               </span>{" "}
-              · Copyright © 2026 · Built to simplify document review for modern teams.
+              · Copyright © 2026 · This is an early prototype built for demonstration purposes.
             </footer>
 
             <div className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 rounded-2xl border border-blue-200 bg-white/95 p-2 shadow-2xl shadow-blue-200 backdrop-blur md:hidden">
